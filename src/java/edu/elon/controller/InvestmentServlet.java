@@ -5,8 +5,8 @@
  */
 package edu.elon.controller;
 
+import edu.elon.model.InvestmentCalculator;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,18 +31,30 @@ public class InvestmentServlet extends HttpServlet {
    */
   protected void processRequest(HttpServletRequest request, HttpServletResponse response)
           throws ServletException, IOException {
-    response.setContentType("text/html;charset=UTF-8");
-    try (PrintWriter out = response.getWriter()) {
-      /* TODO output your page here. You may use following sample code. */
-      out.println("<!DOCTYPE html>");
-      out.println("<html>");
-      out.println("<head>");
-      out.println("<title>Servlet InvestmentServlet</title>");      
-      out.println("</head>");
-      out.println("<body>");
-      out.println("<h1>Servlet InvestmentServlet at " + request.getContextPath() + "</h1>");
-      out.println("</body>");
-      out.println("</html>");
+    String action = request.getParameter("action");
+    //sets the default action if none is given
+    if(action == null){
+      action = "Invest";
+    }
+    System.out.println(action);
+    if(action.equals("Calculate")){
+      Double investAmount = Double.parseDouble(request.getParameter("investAmount"));
+      Double interestRate = Double.parseDouble(request.getParameter("interestRate"));
+      int numYears = Integer.parseInt(request.getParameter("numYears"));
+      System.out.println("Investment Amount: " + investAmount);
+      System.out.println("Interest Rate: " + interestRate);
+      System.out.println("Years: " + numYears);
+      InvestmentCalculator invCalc = new InvestmentCalculator(investAmount,interestRate,numYears);
+      invCalc.calcFutureVal();
+      request.setAttribute("investCalc",invCalc);
+      //redirects user to result.jsp
+      String url = "/result.jsp";
+      getServletContext().getRequestDispatcher(url).forward(request, response);
+    }
+    else{
+      //redirects user to invest.jsp
+      String url = "/invest.jsp";
+      getServletContext().getRequestDispatcher(url).forward(request, response);
     }
   }
 

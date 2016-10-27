@@ -3,7 +3,6 @@
     Created on : Oct 21, 2016, 12:38:03 AM
     Author     : James Greenwell, Sean Webber
 --%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,7 +12,7 @@
     <title>Investment Calculator</title>
   </head>
   <body>
-    <%@include file="includes/header.jsp" %>
+    <%@include file="includes/header.html" %>
     <form action="calculate" method="get">
       <label for="investAmount">Investment Amount</label>
       <span><br></span>
@@ -27,6 +26,6 @@
       <label for="calculate"></label>
       <input type="submit" name="action" id="calculate" value="Calculate">
     </form>
-    <%@include file="includes/footer.jsp" %>
+    <%@include file="includes/footer.html" %>
   </body>
 </html>        

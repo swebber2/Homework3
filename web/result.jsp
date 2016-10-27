@@ -1,9 +1,8 @@
 <%-- 
     Document   : result
     Created on : Oct 21, 2016, 1:08:20 AM
-    Author     : jameszach
+    Author     : James Greenwell, Sean Webber
 --%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,25 +12,26 @@
     <title>Investment Results</title>
   </head>
   <body>
-    <%@include file="includes/header.jsp" %>
+    <%@include file="includes/header.html" %>
+    <jsp:useBean id="investCalc" scope="request" class="edu.elon.model.InvestmentCalculator"/>
       <table>
         <tr>
           <th>Investment Amount:</th>
-          <td>&dollar;${investCalc.formattedCash}</td>
+          <td>&dollar;<jsp:getProperty name = "investCalc" property="formattedCash"/></td>
         </tr>
         <tr>
           <th>Yearly Interest Rate:</th>
-          <td>${investCalc.ratePercent}</td>
+          <td><jsp:getProperty name = "investCalc" property="ratePercent"/></td>
         </tr>
         <tr>
           <th>Number of Years:</th>
-          <td>${investCalc.years}</td>
+          <td><jsp:getProperty name = "investCalc" property="years"/></td>
         </tr>
         <tr>
           <th>Future Value:</th>
-          <td>&dollar;${investCalc.futureVal}</td>
+          <td>&dollar;<jsp:getProperty name = "investCalc" property="futureVal"/></td>
         </tr>
       </table>
-    <%@include file="includes/footer.jsp" %>
+    <%@include file="includes/footer.html" %>
   </body>
 </html>  

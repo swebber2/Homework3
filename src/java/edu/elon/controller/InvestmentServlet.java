@@ -46,7 +46,8 @@ public class InvestmentServlet extends HttpServlet {
       System.out.println("Years: " + numYears);
       InvestmentCalculator invCalc = new InvestmentCalculator(investAmount,interestRate,numYears);
       invCalc.calcFutureVal();
-      request.setAttribute("investCalc",invCalc);
+      request.setAttribute("investCalc",invCalc.getFutureVal());
+      request.setAttribute("ogInvest", investAmount);
       //redirects user to result.jsp
       String url = "/result.jsp";
       getServletContext().getRequestDispatcher(url).forward(request, response);

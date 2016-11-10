@@ -15,7 +15,7 @@ import javax.servlet.jsp.tagext.TagSupport;
 
 /**
  *
- * @author swebber2
+ * @author swebber2 and apadula2
  */
 public class CurrencyFormatTag extends TagSupport{
   private double currency;

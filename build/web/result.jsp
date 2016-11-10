@@ -6,6 +6,7 @@
 
 <%@ taglib prefix="elon" uri="/WEB-INF/tlds/elon.tld" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -15,24 +16,33 @@
   </head>
   <body>
     <%@include file="includes/header.html" %>
-      <table>
+    <table>
+      <tr>
+        <th>Investment Amount:</th>
+        <td><elon:currencyFormat currency = "${sessionScope.ogInvest}"/></td>
+      </tr>
+      <tr>
+        <th>Yearly Interest Rate:</th>
+        <td>${sessionScope.rate}</td>
+      </tr>
+      <tr>
+        <th>Number of Years:</th>
+        <td>${years}</td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <th>Year</th>
+        <td>Value</td>
+      </tr>
+      <c:forEach var="yearValue" items="${yearByYearValues}" varStatus="status">
         <tr>
-          <th>Investment Amount:</th>
-          <td><elon:currencyFormat currency = "${ogInvest}"/></td>
+          <th>${status.index+1}</th>
+          <td><elon:currencyFormat currency = "${yearValue}"/></td>
         </tr>
-        <tr>
-          <th>Yearly Interest Rate:</th>
-          <td></td>
-        </tr>
-        <tr>
-          <th>Number of Years:</th>
-          <td></td>
-        </tr>
-        <tr>
-          <th>Future Value:</th>
-          <td><elon:currencyFormat currency = "${investCalc}"/></td>
-        </tr>
-      </table>
+      </c:forEach>
+    </table>
+      <a href="calculate" title="Return to Calculator">Return to Calculator</a>
     <%@include file="includes/footer.html" %>
   </body>
 </html>  

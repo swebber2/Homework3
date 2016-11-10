@@ -13,7 +13,7 @@
   </head>
   <body>
     <%@include file="includes/header.html" %>
-    <form action="calculate" method="get">
+    <form action="calculate" method="post">
       <label for="investAmount">Investment Amount</label>
       <span><br></span>
       <input type="text" name="investAmount" id="investAmount" autofocus required title="Please enter a numeric value" pattern="^[1-9][0-9]*([.]{1}[0-9]*)?$"><br>

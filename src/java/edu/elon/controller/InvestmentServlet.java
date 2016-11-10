@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -32,6 +33,7 @@ public class InvestmentServlet extends HttpServlet {
   protected void processRequest(HttpServletRequest request, HttpServletResponse response)
           throws ServletException, IOException {
     String action = request.getParameter("action");
+    HttpSession session = request.getSession();
     //sets the default action if none is given
     if(action == null){
       action = "Invest";
@@ -41,13 +43,14 @@ public class InvestmentServlet extends HttpServlet {
       Double investAmount = Double.parseDouble(request.getParameter("investAmount"));
       Double interestRate = Double.parseDouble(request.getParameter("interestRate"));
       int numYears = Integer.parseInt(request.getParameter("numYears"));
-      System.out.println("Investment Amount: " + investAmount);
-      System.out.println("Interest Rate: " + interestRate);
-      System.out.println("Years: " + numYears);
+      
       InvestmentCalculator invCalc = new InvestmentCalculator(investAmount,interestRate,numYears);
       invCalc.calcFutureVal();
-      request.setAttribute("investCalc",invCalc.getFutureVal());
-      request.setAttribute("ogInvest", investAmount);
+      
+      request.setAttribute("yearByYearValues",invCalc.getYearByYear());
+      session.setAttribute("ogInvest", investAmount);
+      session.setAttribute("rate",interestRate);
+      request.setAttribute("years",numYears);
       //redirects user to result.jsp
       String url = "/result.jsp";
       getServletContext().getRequestDispatcher(url).forward(request, response);

@@ -1,7 +1,7 @@
 <%-- 
     Document   : result
     Created on : Oct 21, 2016, 1:08:20 AM
-    Author     : James Greenwell, Sean Webber
+    Author     : James Greenwell, Sean Webber, Alexis Padula
 --%>
 
 <%@ taglib prefix="elon" uri="/WEB-INF/tlds/elon.tld" %>
@@ -16,7 +16,7 @@
   </head>
   <body>
     <%@include file="includes/header.html" %>
-    <table>
+    <table class="topValues">
       <tr>
         <th>Investment Amount:</th>
         <td><elon:currencyFormat currency = "${sessionScope.ogInvest}"/></td>
@@ -30,10 +30,10 @@
         <td>${years}</td>
       </tr>
     </table>
-    <table>
+    <table class="futureValues">
       <tr>
-        <th>Year</th>
-        <td>Value</td>
+        <th class="heading">Year</th>
+        <td class="heading">Value</td>
       </tr>
       <c:forEach var="yearValue" items="${yearByYearValues}" varStatus="status">
         <tr>
@@ -42,7 +42,7 @@
         </tr>
       </c:forEach>
     </table>
-      <a href="calculate" title="Return to Calculator">Return to Calculator</a>
+    <a href="calculate" title="Return to Calculator">Return to Calculator</a>
     <%@include file="includes/footer.html" %>
   </body>
 </html>  

@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author jameszach
+ * @author James Greenwell, Alexis Padula and Sean Webber
  */
 @WebServlet(name = "InvestmentServlet", urlPatterns = {"/calculate"})
 public class InvestmentServlet extends HttpServlet {

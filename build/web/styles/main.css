@@ -1,5 +1,5 @@
 /*
-  Copyright © James Greenwell, Sean Webber
+  Copyright © James Greenwell, Sean Webber, Alexis Padula
   Elon University
   September 12th, 2016
 */
@@ -15,7 +15,6 @@ body > *{
 }
 
 table{
-  margin: 0 auto;
   padding-top: 0;
 }
 
@@ -26,13 +25,27 @@ table tr>*{
 th{
   font-weight: normal;
   padding-right: 1em;
-  text-align: right;
+  text-align: left;
 }
 
 td{
   text-align: left;
 }
 
+.futureValues th{
+  padding-right:3em;
+  text-align:right;
+}
+
+a{
+  display:block;
+  margin: 0 auto;
+  text-align:left;
+}
+
+.heading{
+  font-weight: bold;
+}
 header h1{
   color:navy;
   font-size: 1.4em;
@@ -116,8 +129,23 @@ article{
     font-size: 1.4em;
   }
   
+  table{
+    margin: 0 auto;
+  }
   table tr>*{
     font-size: 1.4em;
+    text-align:left;
+  }
+  
+  table th{
+    text-align:right;
+  }
+  .futureValues th{
+    text-align:right;
+  }
+  
+  a{
+    text-align:center;
   }
   
   span{

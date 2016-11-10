@@ -8,7 +8,7 @@ package edu.elon.model;
 import java.io.Serializable;
 /**
  *
- * @author jameszach
+ * @author James Greenwell, Alexis Padula, and Sean Webber
  */
 public class InvestmentCalculator implements Serializable{
   
